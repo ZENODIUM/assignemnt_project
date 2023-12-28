@@ -7,10 +7,10 @@ Firebase application in django
 ![Firebase](output_images/firebase.jpg)
 
 ### Login Image
-![Login](output_images/login.jpg)
+![Login](output_images/login.png)
 
 ### Dashboard Image 1
-![Dashboard 1](output_images/dashboard1.jpg)
+![Dashboard 1](output_images/dashboard1.png)
 
 ### Dashboard Image 2
-![Dashboard 2](output_images/dashboard2.jpg)
+![Dashboard 2](output_images/dashboard2.png)
