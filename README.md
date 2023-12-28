@@ -1,4 +1,4 @@
-# assignemnt project
+# assignment project
 Firebase application in django
 
 ## Screenshots
