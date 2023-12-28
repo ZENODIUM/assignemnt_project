@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Style for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        /* Style for the overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Style for the close button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome, {{ user_profile.username }}!</h1>
+            <p class="lead">This is your dashboard.</p>
+
+            <!-- Button to open the modal -->
+            <button class="btn btn-primary" onclick="openModal()">Select Country and Language</button>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <form method="post" action="{% url 'dashboard' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="country">Select Country:</label>
+                        <select class="form-control" name="country">
+                            <option value="Country1">India</option>
+                            <option value="Country2">USA</option>
+                            <option value="Country1">UK</option>
+                            <option value="Country2">Japan</option>
+                            <option value="Country1">Russia</option>
+                            <option value="Country2">China</option>
+                            <option value="Country1">Brazil</option>
+                            <option value="Country2">France</option>
+                            <option value="Country1">Spain</option>
+                            <option value="Country2">Germany</option>
+                            <!-- Add more countries as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Select Language:</label>
+                        <select class="form-control" name="language">
+                            <option value="Language1">English</option>
+                            <option value="Language2">Tamil</option>
+                            <option value="Language1">German</option>
+                            <option value="Language2">French</option>
+                            <option value="Language1">Chinese</option>
+   
+                            <!-- Add more languages as needed -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+
+            <!-- Overlay -->
+            <div id="overlay" class="overlay" onclick="closeModal()"></div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        function openModal() {
+            document.getElementById('myModal').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
